@@ -1,5 +1,4 @@
 const express = require("express");
-// const cors = require("cors");
 const toyRoutes = require("./routes/toy.routes");
 const userRoutes = require("./routes/user.routes");
 const globalErrorHandler = require("./utils/errorHandler");
@@ -10,8 +9,6 @@ const app = express();
 
 app.use(express.json());
 app.use(express.static(path.join(__dirname, "public")));
-// { origin: ['http://127.0.0.1:5500/', 'http://127.0.0.1:5501/'] }
-// app.use(cors());
 
 app.use("/api/v1/toys", toyRoutes);
 app.use("/api/v1/users", userRoutes);

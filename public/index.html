@@ -11,29 +11,30 @@
 
 <body>
     <div class="container">
-        <h1>API Documentation</h1>
-        <h6>URL=http://localhost:3000/api/v1</h6>
-        <h4>Users</h4>
-        <table class="table">
-            <thead>
+        <h1 class="text-center mt-4">Toys API Documentation</h1>
+        <br>
+        <h3>Users</h3>
+        <table class="table table-bordered table-striped mt-1">
+            <thead class="table-dark">
                 <tr>
                     <th scope="col"></th>
                     <th scope="col">URL</th>
                     <th scope="col">Name</th>
-                    <th scope="col">URL-Input</th>
-                    <th scope="col">Body-Input</th>
+                    <th scope="col">URL_Input</th>
+                    <th scope="col">Body_Input</th>
                     <th scope="col">Description</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody class="table-success">
                 <tr>
                     <td>POST</td>
                     <td>/users</td>
                     <td>register</td>
+                    <td>None</td>
                     <td>{ <br>
-                        "name": "John Doe",
-                        "email": "john2@gmail.com",
-                        "password": "pass1234",
+                        "name": "John Doe",<br>
+                        "email": "john2@gmail.com",<br>
+                        "password": "pass1234",<br>
                         "passwordConfirm": "pass1234" <br>
                     }</td>
                     <td>Adds a user</td>
@@ -42,28 +43,29 @@
                     <td>POST</td>
                     <td>/users/login</td>
                     <td>login</td>
+                    <td>None</td>
                     <td>{ <br>
-                        "email": "john11@gmail.com",
+                        "email": "john11@gmail.com",<br>
                         "password": "pass1234" <br>
                     }</td>
                     <td>Searchs for toys by their name or info</td>
                 </tr>       
             </tbody>
-           
         </table>
-        <h4>Toys</h4>
-        <table class="table">
-            <thead>
+        <br>
+        <h3>Toys</h3>
+        <table class="table table-bordered table-striped mt-1">
+            <thead class="table-dark">
                 <tr>
                     <th scope="col"></th>
                     <th scope="col">URL</th>
                     <th scope="col">Name</th>
-                    <th scope="col">URL-Input</th>
-                    <th scope="col">Body-Input</th>
+                    <th scope="col">URL_Input</th>
+                    <th scope="col">Body_Input</th>
                     <th scope="col">Description</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody class="table-info">
                 <tr>
                     <td>GET</td>
                     <td><a href="http://localhost:3000/api/v1/toys">/toys</a></td>
@@ -85,7 +87,7 @@
                     <td><a href="http://localhost:3000/api/v1/toys/category/lego">/toys/category/:catname</a>(lego
                         example)</td>
                     <td>toyCategory</td>
-                    <td>:catname</td>
+                    <td>catname</td>
                     <td>None</td>
                     <td>Gets toys by category</td>
                 </tr>
@@ -93,28 +95,24 @@
                     <td>GET</td>
                     <td><a href="http://localhost:3000/api/v1/toys/single">/toys/single</a></td>
                     <td>singleById</td>
-                    <td>:id</td>
+                    <td>id</td>
                     <td>None</td>
                     <td>Gets a toy by its id</td>
                 </tr>
-            </tbody>
-            <tbody>
                 <tr>
                     <td>POST</td>
                     <td>/toys</td>
                     <td>addNewToy</td>
                     <td>None</td>
                     <td>{<br>
-                        "name": "harry potter lego set",
-                        "info": "harry potter lego set for ages 8-99",
-                        "category": "lego",
-                        "img_url": "https://cdn.pixabay.com/photo/2012/04/16/13/25/fireman-35994_1280.png",
+                        "name": "harry potter lego set",<br>
+                        "info": "harry potter lego set for ages 8-99",<br>
+                        "category": "lego",<br>
+                        "img_url": "https://cdn.pixabay.com/photo/2012/04/16/13/25/fireman-35994_1280.png",<br>
                         "price": 45 <br>
                         }</td>
                     <td>Adds a new toy to a user</td>
                 </tr>
-            </tbody>
-            <tbody>
                 <tr>
                     <td>PUT</td>
                     <td>/toys/:id</td>
@@ -125,13 +123,11 @@
                         }</td>
                     <td>Updates a toy</td>
                 </tr>
-            </tbody>
-            <tbody>
                 <tr>
                     <td>DELETE</td>
                     <td>/toys/:id</td>
                     <td>deleteToy</td>
-                    <td>:id</td>
+                    <td>id</td>
                     <td>None</td>
                     <td>Deletes a toy</td>
                 </tr>

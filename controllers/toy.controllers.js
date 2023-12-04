@@ -54,7 +54,8 @@ exports.getToys = asyncWrap(async (req, res, next) => {
     const toys = await Toy.find()
         .populate("user_id")
         .skip(skip)
-        .limit(perPage);
+        .limit(perPage)
+        .select("-__v -_id");
     res.send(toys);
 });
 
@@ -69,7 +70,8 @@ exports.getBySearch = asyncWrap(async (req, res, next) => {
     const toys = await Toy.find({ $or: [{ name: search }, { info: search }] })
         .populate("user_id")
         .skip(skip)
-        .limit(perPage);
+        .limit(perPage)
+        .select("-__v -_id");
     if (!toys[0]) throw new Error("search not in the system");
     res.send(toys);
 });
@@ -84,7 +86,8 @@ exports.getByCategory = asyncWrap(async (req, res, next) => {
     const toys = await Toy.find({ category: catname })
         .populate("user_id")
         .skip(skip)
-        .limit(perPage);
+        .limit(perPage)
+        .select("-__v -_id");
     res.send(toys);
 });
 

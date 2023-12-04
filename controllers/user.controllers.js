@@ -14,7 +14,6 @@ const userJoiSchema = {
     }),
     register: Joi.object().keys({
         password: Joi.string().max(20).required(),
-        // passwordConfirm: Joi.ref("password"),
         email: Joi.string()
             .email({ tlds: { allow: ["com"] } })
             .error(() => Error("Email is not valid"))
@@ -47,7 +46,7 @@ exports.register = asyncWrap(async (req, res, next) => {
 
     console.log(newUser);
 
-    res.status(201).send(newUser);//.select("-passwordConfirm");
+    res.status(201).send(newUser);
 });
 
 const checkIfUserExists = async (email) => {
@@ -69,7 +68,6 @@ exports.getUserById = asyncWrap(async (req, res, next) => {
 exports.login = asyncWrap(async (req, res, next) => {
     const body = req.body;
 
-    //Todo: validate body
     const validate = userJoiSchema.login.validate(body);
     if (validate.error) {
         return next(new AppError(401, validate.error.message));
@@ -81,7 +79,7 @@ exports.login = asyncWrap(async (req, res, next) => {
     if (!user || !bcrypt.compare(body.password, user.password)) {
         return next(new AppError(401, "Password or email not valid"));
     }
-    //* generate jwt token
+    // generates jwt token
     const token = generateToken(user);
     res.send({ user, token });
 });

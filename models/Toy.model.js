@@ -29,14 +29,11 @@ const toySchema = new mongoose.Schema({
       type: Date,
       required: false,
     },
-    ///Parent referencing
     user_id: {
 
         type: mongoose.Schema.ObjectId,
         ref: "User",
         required: true,
-
-    //   type: mongoose.Schema.ObjectId,
     },
   });
 
