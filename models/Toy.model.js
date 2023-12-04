@@ -42,6 +42,6 @@ const toySchema = new mongoose.Schema({
     next();
   });
 
-  const Task = mongoose.model("Task", toySchema);
-  module.exports = Task;
+  const Toy = mongoose.model("Toy", toySchema);
+  module.exports = Toy;
   

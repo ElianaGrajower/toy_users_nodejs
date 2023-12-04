@@ -7,7 +7,7 @@ const { Types } = require("mongoose");
 exports.deleteToy = asyncWrap(async (req, res, next) => {
     const toyId = req.params.delId;
     const userId = req.user.id;
-    const toyToUpdate = await Toy.find({ id: toyId, user_id: userId});
+    const toyToUpdate = await Toy.find({ id: toyId, user_id: userId });
     if (!toyToUpdate[0]) throw new Error("Toy doesn't belong to user");
     const deleted = await Toy.deleteOne({ id: toyId, user_id: userId });
     res.status(200).json({
@@ -22,7 +22,7 @@ exports.editToy = asyncWrap(async (req, res, next) => {
     const userId = req.user.id;
     const toyToUpdate = await Toy.find({ id: toyId, user_id: userId });
     if (!toyToUpdate[0]) throw new Error("Toy doesn't belong to user");
-    const updated = await Toy.updateOne({ id: toyId , user_id: userId}, body);
+    const updated = await Toy.updateOne({ id: toyId, user_id: userId }, body);
     res.status(200).json({
         status: "updated",
         updated,
@@ -100,3 +100,19 @@ exports.getSingle = asyncWrap(async (req, res, next) => {
     res.send(toys[0]);
 });
 
+exports.getByPrice = asyncWrap(async (req, res, next) => {
+    const query = req.query;
+    const perPage = 10;
+    let skip = 0;
+    if (query.page) skip = (query.page - 1) * perPage;
+    
+    if (!query.min || !query.max) throw new Error("Input a price range");
+    const { min, max } = query;
+    const toys = await Toy.find({ price: { $gt: min, $lt: max } })
+        .populate("user_id")
+        .skip(skip)
+        .limit(perPage)
+        .select("-__v -_id");
+    if (!toys[0]) throw new Error("Price range not in the system");
+    res.send(toys);
+});
