@@ -24,11 +24,11 @@ const userSchema = new Schema({
         type: String,
         required: true,
     },
-    passwordConfirm: {
-        type: String,
-        required: [true, "Please retype the password"],
-        select: false,
-    },
+    // passwordConfirm: {
+    //     type: String,
+    //     required: [true, "Please retype the password"],
+    //     select: false,
+    // },
     date_created: {
         type: Date,
         default: new Date(),

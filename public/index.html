@@ -20,7 +20,8 @@
                     <th scope="col"></th>
                     <th scope="col">URL</th>
                     <th scope="col">Name</th>
-                    <th scope="col">Input</th>
+                    <th scope="col">URL-Input</th>
+                    <th scope="col">Body-Input</th>
                     <th scope="col">Description</th>
                 </tr>
             </thead>
@@ -57,7 +58,8 @@
                     <th scope="col"></th>
                     <th scope="col">URL</th>
                     <th scope="col">Name</th>
-                    <th scope="col">Input</th>
+                    <th scope="col">URL-Input</th>
+                    <th scope="col">Body-Input</th>
                     <th scope="col">Description</th>
                 </tr>
             </thead>
@@ -67,6 +69,7 @@
                     <td><a href="http://localhost:3000/api/v1/toys">/toys</a></td>
                     <td>getToys</td>
                     <td>None</td>
+                    <td>None</td>
                     <td>Gets all the toys</td>
                 </tr>
                 <tr>
@@ -74,6 +77,7 @@
                     <td><a href="http://localhost:3000/api/v1/toys/search?s=">/toys/search?s=</a></td>
                     <td>toySearch</td>
                     <td>s=name<br>s=info</td>
+                    <td>None</td>
                     <td>Searchs for toys by their name or info</td>
                 </tr>
                 <tr>
@@ -82,6 +86,7 @@
                         example)</td>
                     <td>toyCategory</td>
                     <td>:catname</td>
+                    <td>None</td>
                     <td>Gets toys by category</td>
                 </tr>
                 <tr>
@@ -89,6 +94,7 @@
                     <td><a href="http://localhost:3000/api/v1/toys/single">/toys/single</a></td>
                     <td>singleById</td>
                     <td>:id</td>
+                    <td>None</td>
                     <td>Gets a toy by its id</td>
                 </tr>
             </tbody>
@@ -97,6 +103,7 @@
                     <td>POST</td>
                     <td>/toys</td>
                     <td>addNewToy</td>
+                    <td>None</td>
                     <td>{<br>
                         "name": "harry potter lego set",
                         "info": "harry potter lego set for ages 8-99",
@@ -104,7 +111,7 @@
                         "img_url": "https://cdn.pixabay.com/photo/2012/04/16/13/25/fireman-35994_1280.png",
                         "price": 45 <br>
                         }</td>
-                    <td>Adds a new toy to a user </td>
+                    <td>Adds a new toy to a user</td>
                 </tr>
             </tbody>
             <tbody>
@@ -112,10 +119,11 @@
                     <td>PUT</td>
                     <td>/toys/:id</td>
                     <td>editToy</td>
+                    <td>None</td>
                     <td>{ <br>
                         "price": 100 <br>
                         }</td>
-                    <td>Updates a toy that id is put in the url and the updated field are in the body</td>
+                    <td>Updates a toy</td>
                 </tr>
             </tbody>
             <tbody>
@@ -124,7 +132,8 @@
                     <td>/toys/:id</td>
                     <td>deleteToy</td>
                     <td>:id</td>
-                    <td>Deletes a toy that id is put in the url</td>
+                    <td>None</td>
+                    <td>Deletes a toy</td>
                 </tr>
             </tbody>
         </table>

@@ -14,7 +14,7 @@ const userJoiSchema = {
     }),
     register: Joi.object().keys({
         password: Joi.string().max(20).required(),
-        passwordConfirm: Joi.ref("password"),
+        // passwordConfirm: Joi.ref("password"),
         email: Joi.string()
             .email({ tlds: { allow: ["com"] } })
             .error(() => Error("Email is not valid"))
@@ -47,7 +47,7 @@ exports.register = asyncWrap(async (req, res, next) => {
 
     console.log(newUser);
 
-    res.status(201).send(newUser).select("-passwordConfirm");
+    res.status(201).send(newUser);//.select("-passwordConfirm");
 });
 
 const checkIfUserExists = async (email) => {
