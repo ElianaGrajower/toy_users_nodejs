@@ -32,7 +32,7 @@ const toySchema = new mongoose.Schema({
     ///Parent referencing
     user_id: {
 
-        type: mongoose.Types.ObjectId,
+        type: mongoose.Schema.ObjectId,
         ref: "User",
         required: true,
 

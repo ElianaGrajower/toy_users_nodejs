@@ -7,10 +7,9 @@ const { Types } = require("mongoose");
 exports.deleteToy = asyncWrap(async (req, res, next) => {
     const toyId = req.params.delId;
     const userId = req.user.id;
-    const toyToUpdate = await Toy.find({ id: toyId });
-    // if (!toyToUpdate || toyToUpdate[0].user_id !== userId) throw new Error("Toy doesn't belong to user");
-    if (!toyToUpdate) throw new Error("Toy doesn't belong to user");
-    const deleted = await Toy.deleteOne({ id: toyId });
+    const toyToUpdate = await Toy.find({ id: toyId, user_id: userId});
+    if (!toyToUpdate[0]) throw new Error("Toy doesn't belong to user");
+    const deleted = await Toy.deleteOne({ id: toyId, user_id: userId });
     res.status(200).json({
         status: "deleted",
         deleted,
@@ -22,11 +21,7 @@ exports.editToy = asyncWrap(async (req, res, next) => {
     const toyId = req.params.editId;
     const userId = req.user.id;
     const toyToUpdate = await Toy.find({ id: toyId, user_id: userId });
-    console.log(userId);
-    console.log(toyToUpdate);
-    console.log(toyToUpdate[0].user_id);
-    // if (!toyToUpdate || toyToUpdate[0].user_id != userId) throw new Error("Toy doesn't belong to user");
-    if (!toyToUpdate) throw new Error("Toy doesn't belong to user");
+    if (!toyToUpdate[0]) throw new Error("Toy doesn't belong to user");
     const updated = await Toy.updateOne({ id: toyId , user_id: userId}, body);
     res.status(200).json({
         status: "updated",
@@ -102,6 +97,3 @@ exports.getSingle = asyncWrap(async (req, res, next) => {
     res.send(toys[0]);
 });
 
-
-//?newTask.ownerId = userId;
-//?if this doesnt work in addTask try newTask.ownerId = new Types.ObjectId(userId);

@@ -83,13 +83,7 @@ exports.login = asyncWrap(async (req, res, next) => {
     }
     //* generate jwt token
     const token = generateToken(user);
-    res.cookie("jwt", token, {
-        httpOnly: true,
-        secure: true,
-        maxAge: 1000 * 60 * 10,
-    });
     res.send({ user, token });
-    // send the user object to the client
 });
 
 
