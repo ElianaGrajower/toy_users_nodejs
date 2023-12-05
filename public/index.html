@@ -76,7 +76,7 @@
                 </tr>
                 <tr>
                     <td>GET</td>
-                    <td><a href="http://localhost:3000/api/v1/toys/search?s=wooden blocks for kids ages 4-99">/toys/search?s=</a></td>
+                    <td><a href="http://localhost:3000/api/v1/toys/search?s=wooden blocks for kids ages 4-99">/toys/search?s=value</a></td>
                     <td>toySearch</td>
                     <td>s=name<br>s=info</td>
                     <td>None</td>
@@ -84,7 +84,7 @@
                 </tr>
                 <tr>
                     <td>GET</td>
-                    <td><a href="http://localhost:3000/api/v1/toys/category/lego">/toys/category/:catname</a>(lego
+                    <td><a href="http://localhost:3000/api/v1/toys/category/lego">/toys/category/:catnameValue</a>(lego
                         example)</td>
                     <td>toyCategory</td>
                     <td>catname</td>
@@ -93,7 +93,7 @@
                 </tr>
                 <tr>
                     <td>GET</td>
-                    <td><a href="http://localhost:3000/api/v1/toys/prices/?min=10&max=40">/toys/prices</a></td>
+                    <td><a href="http://localhost:3000/api/v1/toys/prices/?min=10&max=40">/toys/prices/?min=minValue&max=maxValue</a></td>
                     <td>getByPrice</td>
                     <td>min=name&max=info</td>
                     <td>None</td>
@@ -101,7 +101,7 @@
                 </tr>
                 <tr>
                     <td>GET</td>
-                    <td><a href="http://localhost:3000/api/v1/toys/single/656e4fbf37b44a3991fda629">/toys/single</a></td>
+                    <td><a href="http://localhost:3000/api/v1/toys/single/656e4fbf37b44a3991fda629">/toys/single/:idValue</a></td>
                     <td>singleById</td>
                     <td>id</td>
                     <td>None</td>
